@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<a href="{% url 'auth_logout' %}" class="">Logout</a>
+    {% for book in books %}
+        <div>
+            <p>{{ book.title}}</p>
+            <p>{{ book.author}}</p>
+            <p><a href="{{book.url}}">{{ book.url}}</a></p>
+            <p>{{book.description}}</p>
+            <ul>
+                {% for category in books.category.all %}
+                <li><a href={% url 'category' slug=category.slug %}>{{ category.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+{% endblock %}
