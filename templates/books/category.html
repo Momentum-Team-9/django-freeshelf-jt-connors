@@ -1,13 +1,9 @@
 {% extends "base.html" %}
-
 {% block content %}
-<a href="{% url 'book_list' %}" class=""> Back</a>
+<a href="{% url 'book_list' %}" class="">Back</a>
 <h1> {{ category.name }} </h1>
 {% for book in books %}
     <h2>{{ book.title }}</h2>
     <h3>{{ book.author }}</h3>
 {% endfor %}
-
-
-
 {% endblock content %}
