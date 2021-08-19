@@ -16,7 +16,7 @@ def book_list(request):
     books = Book.objects.all()
     return render(request, 'books/book_list.html', {'books': books})
 
-def show_category(request, slug):
+def category(request, slug):
     categories = get_object_or_404(Category, slug=slug)
     books = categories.books.all()
 

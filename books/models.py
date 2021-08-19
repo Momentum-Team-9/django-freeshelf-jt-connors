@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 from django.db.models.fields import DateTimeField, URLField
 
@@ -24,5 +25,10 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255)
 
+    def get_absolute_url(self):
+        return reverse("category", kwargs={"slug": self.slug})
+
     def __str__(self):
         return f'{self.name}'
+    class Meta:
+        verbose_name_plural = "categories"
